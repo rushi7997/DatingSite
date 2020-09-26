@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("../img/bg_img_1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.logo {
+    color: #FFFFFF;
+    font-size: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo img {
+    width: 50px;
+    display: inline-block;
+}
+
+.logo p {
+    margin-left: 10px;
+}
+
+nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.navbar_item {
+    width: 150px;
+    text-align: center;
+    list-style: none;
+    background-color: #FFFFFF;
+    color: #FD5068;
+    /*border: seashell dotted;*/
+    padding: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border-style: none;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.navbar_item:hover {
+    color: #FFFFFF;
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    transition: ease-in 0.3s;
+}
+
+.body-writing {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    position: absolute;
+    top: 70%;
+    align-items: center;
+}
+
+.body-writing p {
+    color: #FFFFFF;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.body-writing a {
+    text-decoration: none;
+}
+
+.join_button {
+    width: 200px;
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 10px;
+    padding: 10px 24px;
+    border-style: none;
+}
+
+.join_button:hover {
+    color: #FD5068;
+    background: #FFFFFF;
+    transition: ease-in 0.3s;
+}
+
+/*modal css*/
+
+#login-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: rgba(255,255,255,1);
+    width: 500px;
+    max-width: 80%;
+}
+
+#login-modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-title{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.modal-header #login-modal-close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FD5068;
+    text-shadow: #fd267d;
+}
+
+#overlay{
+    position: fixed;
+    transition: 300ms ease-in-out;
+    opacity: 0;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.form-input label{
+    font-size: 1.4rem;
+    padding: 0 20px;
+    margin: 20px;
+}
+.form-input input{
+    font-size: 1.4rem;
+    width: 150px;
+    max-width: 70%;
+    height: 40px;
+    padding: 0 20px;
+    align-items: center;
+    margin-right: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.login-modal-button{
+    width: 200px;
+    background: #FFFFFF;
+    color: #FD5068;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-align: center;
+    border-radius: 25px;
+    padding: 10px 24px;
+    margin: 10px;
+    border: #fd267d solid;
+}
+
+.login-modal-button:hover {
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    color: #FFFFFF;
+    transition: ease-in 0.3s;
+    border: white solid;
+}
+
+/*signup modal*/
+
+#signup-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: rgba(255,255,255,1);
+    width: 500px;
+    max-width: 80%;
+}
+
+#signup-modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header #signup-modal-close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FD5068;
+    text-shadow: #fd267d;
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        margin-top: 20px;
+        height: auto;
+        align-items: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar_item {
+        margin-top: 10px;
+    }
+    .form-input{
+        flex-direction: column;
+        /*text-align: left;*/
+        align-items: flex-start;
+    }
+    .form-input input{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .body-writing p{
+        font-size: 2rem;
+    }
+}
