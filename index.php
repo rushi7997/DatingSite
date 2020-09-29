@@ -1,5 +1,46 @@
 <?php
-
+$users = array(
+    [
+        "id" => 1,
+        "firstName" => "First",
+        "lastName" => "Last",
+        "age" => 25,
+        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
+        "profile_pic" => "./users/img_1_1.jpg"
+    ],
+    [
+        "id" => 1,
+        "firstName" => "First",
+        "lastName" => "Last",
+        "age" => 25,
+        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
+        "profile_pic" => "./users/img_1_1.jpg"
+    ],
+    [
+        "id" => 1,
+        "firstName" => "First",
+        "lastName" => "Last",
+        "age" => 25,
+        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
+        "profile_pic" => "./users/img_1_1.jpg"
+    ],
+    [
+        "id" => 1,
+        "firstName" => "First",
+        "lastName" => "Last",
+        "age" => 25,
+        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
+        "profile_pic" => "./users/img_1_1.jpg"
+    ],
+    [
+        "id" => 1,
+        "firstName" => "First",
+        "lastName" => "Last",
+        "age" => 25,
+        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
+        "profile_pic" => "./users/img_1_1.jpg"
+    ]
+);
 ?>
 
 <!doctype html>
@@ -22,7 +63,7 @@
     </div>
     <div class="navbar">
         <button id="openLoginModal" class="navbar_item"> Login</button>
-        <button class="navbar_item"> Profiles</button>
+        <button id="openProfileModal" class="navbar_item"> Profiles</button>
     </div>
     <div class="body-writing">
         <p> You never know where a Swipe might take you.™ </p>
@@ -30,7 +71,7 @@
     </div>
 </nav>
 
-<div  id="login-modal">
+<div id="login-modal">
     <div class="modal-header">
         <div class="modal-title">Login</div>
         <div data-close-button id="login-modal-close-button">&times;</div>
@@ -50,7 +91,7 @@
     </form>
 </div>
 
-<div  id="signup-modal">
+<div id="signup-modal">
     <div class="modal-header">
         <div class="modal-title">Sign up</div>
         <div data-close-button id="signup-modal-close-button">&times;</div>
@@ -77,8 +118,23 @@
         </div>
     </form>
 </div>
+<?php //for($i = 0; $i < ) ?>
+<div id="profile_modal" class="profile_modal">
+    <div class="modal-header">
+        <div class="modal-title"> Profiles </div>
+        <div data-close-button id="profile-close-button">&times;</div>
+    </div>
+    <div class="modal-body">
+        <div class="profile_img">
+            <img src="./users/img_1_1.jpg" alt="user_image">
+            <div class="heart profile-btn"></div>
+            <div id="profile-window-close-btn" class="profile-btn">&times;</div>
+        </div>
+        <div class="firstName-lastname-age"><?= ucfirst($users[0]["firstName"])." ". ucfirst($users[0]["lastName"]). " , ".$users[0]["age"]. "." ?></div>
+        <div class="about-me"> <?= $users[0]['about'] ?> </div>
+    </div>
+</div>
 <div id="overlay"></div>
 </body>
-<script src="javascript/script.js"></script>
+<script src="./javascript/script.js"></script>
 </html>
-

@@ -278,3 +278,131 @@ nav {
         font-size: 2rem;
     }
 }
+
+/*heart CSS*/
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background: url("../img/heart.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    animation: fave-heart 1s steps(28);
+}
+.heart:hover {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
+}
+@keyframes fave-heart {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -2800px 0;
+    }
+}
+/*profile modal*/
+
+.profile_modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: rgba(255,255,255,1);
+    width: 500px;
+    max-width: 80%;
+    height: 95%;
+    overflow-y: auto;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_img{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.profile_img img{
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    border: 1px solid black;
+    /*box-shadow: #fd267d;*/
+    margin-top: 10px;
+    box-shadow: 2px 3px 4px 5px #ccc;
+}
+
+#profile-close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FD5068;
+    text-shadow: #fd267d;
+}
+
+#profile-window-close-btn{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size:3rem;
+    font-weight: 700;
+    color: #FD5068;
+    text-shadow: #fd267d;
+    opacity: 0.6;
+}
+
+#profile-window-close-btn:hover{
+    opacity: 1;
+    transition: ease-in-out 300ms;
+}
+
+.firstName-lastname-age{
+    font-size: 2rem;
+    text-align: left;
+    width: 90%;
+}
+
+.about-me{
+    text-align: left;
+    width: 90%;
+    padding: 10px;
+    font-weight: 450;
+}
+
+#profile_modal::-webkit-scrollbar{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#profile_modal::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
+}
+
+.profile_modal.gone{
+    left: -50%;
+    opacity: 0;
+    transition: ease-in-out 1s;
+}
+
+#profile_modal.active{
+    transform: translate(-50%, -50%) scale(1);
+    transition: ease-in-out 300ms;
+}
