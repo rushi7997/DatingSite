@@ -334,7 +334,13 @@ nav {
     flex-wrap: wrap;
 }
 
-.profile_img img{
+.profiles{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+}
+
+.modal-body img{
     width: 300px;
     height: 400px;
     border-radius: 10px;
@@ -385,24 +391,25 @@ nav {
     font-weight: 450;
 }
 
-#profile_modal::-webkit-scrollbar{
+.profile_modal::-webkit-scrollbar{
     width: 10px;
     background-color: #F5F5F5;
 }
 
-#profile_modal::-webkit-scrollbar-thumb{
+.profile_modal::-webkit-scrollbar-thumb{
     border-radius: 10px;
     background-color: #FFF;
     background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
 }
 
 .profile_modal.gone{
+    position: absolute;
     left: -50%;
     opacity: 0;
     transition: ease-in-out 1s;
 }
 
-#profile_modal.active{
+.profile_modal.active{
     transform: translate(-50%, -50%) scale(1);
     transition: ease-in-out 300ms;
 }

@@ -2,40 +2,40 @@
 $users = array(
     [
         "id" => 1,
-        "firstName" => "First",
-        "lastName" => "Last",
+        "firstName" => "First_1",
+        "lastName" => "Last_1",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
         "profile_pic" => "./users/img_1_1.jpg"
     ],
     [
-        "id" => 1,
-        "firstName" => "First",
-        "lastName" => "Last",
+        "id" => 2,
+        "firstName" => "First_2",
+        "lastName" => "Last_2",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
         "profile_pic" => "./users/img_1_1.jpg"
     ],
     [
-        "id" => 1,
-        "firstName" => "First",
-        "lastName" => "Last",
+        "id" => 3,
+        "firstName" => "First_3",
+        "lastName" => "Last_3",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
         "profile_pic" => "./users/img_1_1.jpg"
     ],
     [
-        "id" => 1,
-        "firstName" => "First",
-        "lastName" => "Last",
+        "id" => 4,
+        "firstName" => "First_4",
+        "lastName" => "Last_4",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
         "profile_pic" => "./users/img_1_1.jpg"
     ],
     [
-        "id" => 1,
-        "firstName" => "First",
-        "lastName" => "Last",
+        "id" => 5,
+        "firstName" => "First_5",
+        "lastName" => "Last_5",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
         "profile_pic" => "./users/img_1_1.jpg"
@@ -74,7 +74,7 @@ $users = array(
 <div id="login-modal">
     <div class="modal-header">
         <div class="modal-title">Login</div>
-        <div data-close-button id="login-modal-close-button">&times;</div>
+        <div id="login-modal-close-button">&times;</div>
     </div>
     <form action="#" method="post">
         <div class="modal-body">
@@ -94,7 +94,7 @@ $users = array(
 <div id="signup-modal">
     <div class="modal-header">
         <div class="modal-title">Sign up</div>
-        <div data-close-button id="signup-modal-close-button">&times;</div>
+        <div id="signup-modal-close-button">&times;</div>
     </div>
     <form action="#" method="post">
         <div class="modal-body">
@@ -118,23 +118,77 @@ $users = array(
         </div>
     </form>
 </div>
-<?php //for($i = 0; $i < ) ?>
-<div id="profile_modal" class="profile_modal">
-    <div class="modal-header">
-        <div class="modal-title"> Profiles </div>
-        <div data-close-button id="profile-close-button">&times;</div>
-    </div>
-    <div class="modal-body">
-        <div class="profile_img">
-            <img src="./users/img_1_1.jpg" alt="user_image">
-            <div class="heart profile-btn"></div>
-            <div id="profile-window-close-btn" class="profile-btn">&times;</div>
+<?php for ($i = 0; $i < count($users); $i++) { ?>
+    <div id="<?= $users[$i]['id'] ?>" class="profile_modal">
+        <div class="modal-header">
+            <div class="modal-title"> Profiles</div>
+            <div class="close-btn" id="profile-close-button">&times;</div>
         </div>
-        <div class="firstName-lastname-age"><?= ucfirst($users[0]["firstName"])." ". ucfirst($users[0]["lastName"]). " , ".$users[0]["age"]. "." ?></div>
-        <div class="about-me"> <?= $users[0]['about'] ?> </div>
+        <div class="modal-body">
+            <img src="./users/img_1_1.jpg" alt="user_image">
+            <div class="profile_img" id="<?= $users[$i]['id']."_id" ?>">
+                <div class="heart profile-btn"></div>
+                <div id="profile-window-close-btn" class="profile-btn <?= ($i == 4) ? "five" : ''  ?>">&times;</div>
+            </div>
+            <div class="firstName-lastname-age"><?= ucfirst($users[$i]["firstName"]) . " " . ucfirst($users[$i]["lastName"]) . " , " . $users[$i]["age"] . "." ?></div>
+            <div class="about-me"> <?= $users[$i]['about'] ?> </div>
+        </div>
     </div>
-</div>
+<?php } ?>
 <div id="overlay"></div>
 </body>
+<script>
+    let profiles = <?php echo json_encode($users, JSON_PRETTY_PRINT); ?>;
+    let currentProfile = 1;
+    const profileXBtn = document.querySelectorAll('#profile-window-close-btn');
+    // console.log(document.getElementById("1_id").childNodes[3]);
+
+    const len = profiles.length;
+    profileXBtn.forEach(btn => {
+        if(btn.parentElement.parentElement.parentElement.id !== len.toString()){
+            btn.addEventListener('click', () => {
+                const modal = document.getElementById(currentProfile.toString());
+                nextProfile(modal);
+            })
+        }
+    })
+
+
+    const nextProfile = (modal) => {
+        let currentModal = modal;
+        if(currentModal === null)
+            return ;
+        currentModal.classList.remove("active");
+        currentModal.classList.add("gone");
+        currentProfile += 1;
+        let nextModal = document.getElementById(currentProfile);
+        if(nextModal===null)
+            return
+        nextModal.classList.add("active");
+    }
+
+    const dataClosebtn = document.querySelectorAll('.close-btn');
+
+
+    dataClosebtn.forEach(btn => {
+        for (let i = 0; i <= 5; i++){
+            btn.addEventListener('click', () => {
+                let modal = document.getElementById(i.toString());
+                closeModal(modal);
+                resetProfileModal(modal);
+                currentProfile = 1;
+            });
+        }
+    });
+    const fiveBtn = document.getElementsByClassName('five');
+
+    fiveBtn[0].addEventListener('click', ()=> {
+        dataClosebtn[4].click();
+        let modal = document.getElementById("signup-modal");
+        console.log(modal);
+        openLoginModal(modal);
+    })
+
+</script>
 <script src="./javascript/script.js"></script>
 </html>

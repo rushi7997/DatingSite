@@ -5,25 +5,25 @@ const openSignupModalButton = document.getElementById('openSignupButton');
 const closeSignupModalButton = document.getElementById('signup-modal-close-button');
 const openProfileModalButton = document.getElementById("openProfileModal");
 const closeProfileModalButton = document.getElementById('profile-close-button');
-const profileBtn = document.querySelectorAll('.profile-btn');
 
+// const fiveBtn = document.getElementsByClassName('five');
+//
+// fiveBtn[0].addEventListener('click', ()=> {
+//     const modal = document.getElementById("5");
+// })
 
-profileBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        closeingModal = document.getElementById('profile_modal');
-        closeModal(closeingModal);
-        openingModal = document.getElementById('signup-modal');
-        openLoginModal(openingModal);
-    });
-});
+const resetProfileModal = (modal) => {
+    if(modal === null) return;
+    modal.classList.remove("gone");
+}
 
 openProfileModalButton.addEventListener('click', ()=> {
-    const modal = document.getElementById('profile_modal');
+    const modal = document.getElementById("1");
     openLoginModal(modal);
 });
 
 closeProfileModalButton.addEventListener('click', ()=> {
-    const modal = document.getElementById('profile_modal');
+    const modal = document.getElementById('1');
     closeModal(modal);
 });
 
