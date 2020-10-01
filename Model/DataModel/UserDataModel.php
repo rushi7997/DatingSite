@@ -21,7 +21,7 @@ class UserDataModel
             'age' => $user->getAge(),
             'gender' => $user->isGender()
         ];
-        $sql = "INSERT INTO UserImages (id, firstName, lastName, about, profilePicUrl, isPremium, age, gender) VALUES (:id, :firstName, :lastName, :about, :profilePicUrl, :isPremium, :age, :gender)";
+        $sql = "INSERT INTO users (id, firstName, lastName, about, profilePicUrl, isPremium, age, gender) VALUES (:id, :firstName, :lastName, :about, :profilePicUrl, :isPremium, :age, :gender)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
     }

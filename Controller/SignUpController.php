@@ -16,7 +16,7 @@ if((!isset($_POST['id']) || empty($_POST['id']))
 }
 
 if(!empty($message)){
-    header();
+    header("Location: ../Views/index.php");
 }
 
 
@@ -27,8 +27,16 @@ require_once "./Model/DataModel/UserDataModel.php";
 try{
     $connection = new MYSQLConnection();
     $userDataModel = new UserDataModel($connection);
-    $user = new User($_POST['id'],$_POST['firstName'],$_POST['lastName'],$_POST['about'],$_POST['profilePicUrl'],$_POST['isPremium'],intval($_POST['age']), $_POST['gender'])
-}catch (PDOException $exception){
+    $user = new User($_POST['id'],$_POST['firstName'],$_POST['lastName'],$_POST['about'],$_POST['profilePicUrl'],$_POST['isPremium'],intval($_POST['age']), $_POST['gender']);
 
+    $userDataModel->insert($user);
+
+    $message = " User Created Successfully ";
+}catch (PDOException $exception){
+    $message = " User Created Successfully ";
+} finally {
+    if(!empty($message)){
+        header("Location: ../Views/index.php");
+    }
 }
 

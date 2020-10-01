@@ -141,8 +141,6 @@ $users = array(
     let profiles = <?php echo json_encode($users, JSON_PRETTY_PRINT); ?>;
     let currentProfile = 1;
     const profileXBtn = document.querySelectorAll('#profile-window-close-btn');
-    // console.log(document.getElementById("1_id").childNodes[3]);
-
     const len = profiles.length;
     profileXBtn.forEach(btn => {
         if(btn.parentElement.parentElement.parentElement.id !== len.toString()){
