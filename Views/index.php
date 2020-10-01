@@ -6,7 +6,7 @@ $users = array(
         "lastName" => "Last_1",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./users/img_1_1.jpg"
+        "profile_pic" => "./UserImages/img_1_1.jpg"
     ],
     [
         "id" => 2,
@@ -14,7 +14,7 @@ $users = array(
         "lastName" => "Last_2",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./users/img_1_1.jpg"
+        "profile_pic" => "./UserImages/img_1_1.jpg"
     ],
     [
         "id" => 3,
@@ -22,7 +22,7 @@ $users = array(
         "lastName" => "Last_3",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./users/img_1_1.jpg"
+        "profile_pic" => "./UserImages/img_1_1.jpg"
     ],
     [
         "id" => 4,
@@ -30,7 +30,7 @@ $users = array(
         "lastName" => "Last_4",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./users/img_1_1.jpg"
+        "profile_pic" => "./UserImages/img_1_1.jpg"
     ],
     [
         "id" => 5,
@@ -38,7 +38,7 @@ $users = array(
         "lastName" => "Last_5",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./users/img_1_1.jpg"
+        "profile_pic" => "./UserImages/img_1_1.jpg"
     ]
 );
 ?>
@@ -125,7 +125,7 @@ $users = array(
             <div class="close-btn" id="profile-close-button">&times;</div>
         </div>
         <div class="modal-body">
-            <img src="./users/img_1_1.jpg" alt="user_image">
+            <img src="../UserImages/img_1_1.jpg" alt="user_image">
             <div class="profile_img" id="<?= $users[$i]['id']."_id" ?>">
                 <div class="heart profile-btn"></div>
                 <div id="profile-window-close-btn" class="profile-btn <?= ($i == 4) ? "five" : ''  ?>">&times;</div>
@@ -149,9 +149,9 @@ $users = array(
             btn.addEventListener('click', () => {
                 const modal = document.getElementById(currentProfile.toString());
                 nextProfile(modal);
-            })
+            });
         }
-    })
+    });
 
 
     const nextProfile = (modal) => {
@@ -187,8 +187,8 @@ $users = array(
         let modal = document.getElementById("signup-modal");
         console.log(modal);
         openLoginModal(modal);
-    })
+    });
 
 </script>
-<script src="./javascript/script.js"></script>
+<script src="javascript/script.js"></script>
 </html>
