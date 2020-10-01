@@ -7,3 +7,8 @@
 .idea/modules.xml
 .idea/php.xml
 .idea/workspace.xml
+/.idea/dataSources/23ed99cf-e396-4a1f-8b2f-98994918d40f.xml
+./.idea/*
+/.idea/dataSources.local.xml
+/.idea/dataSources.xml
+/.idea/vcs.xml
