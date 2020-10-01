@@ -76,15 +76,15 @@ $users = array(
         <div class="modal-title">Login</div>
         <div id="login-modal-close-button">&times;</div>
     </div>
-    <form action="#" method="post">
+    <form action="../Controller/LoginController.php" method="post">
         <div class="modal-body">
             <div class="form-input">
                 <label for="email">User Id : </label>
-                <input type="email" name="email" required>
+                <input type="email" name="id" required>
             </div>
             <div class="form-input">
                 <label for="password"> Password : </label>
-                <input type="password" required>
+                <input type="password" name="password" required>
             </div>
             <button class="login-modal-button" type="submit" value="Login">Login</button>
         </div>
