@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 $users = array(
     [
         "id" => 1,
@@ -6,7 +7,7 @@ $users = array(
         "lastName" => "Last_1",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./UserImages/img_1_1.jpg"
+        "profilePicUrl" => "../UserImages/img_1_1.jpg"
     ],
     [
         "id" => 2,
@@ -14,7 +15,7 @@ $users = array(
         "lastName" => "Last_2",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./UserImages/img_1_1.jpg"
+        "profilePicUrl" => "../UserImages/img_1_1.jpg"
     ],
     [
         "id" => 3,
@@ -22,7 +23,7 @@ $users = array(
         "lastName" => "Last_3",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./UserImages/img_1_1.jpg"
+        "profilePicUrl" => "../UserImages/img_1_1.jpg"
     ],
     [
         "id" => 4,
@@ -30,7 +31,7 @@ $users = array(
         "lastName" => "Last_4",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./UserImages/img_1_1.jpg"
+        "profilePicUrl" => "../UserImages/img_1_1.jpg"
     ],
     [
         "id" => 5,
@@ -38,9 +39,13 @@ $users = array(
         "lastName" => "Last_5",
         "age" => 25,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profile_pic" => "./UserImages/img_1_1.jpg"
+        "profilePicUrl" => "../UserImages/img_1_1.jpg"
     ]
 );
+$isMessage = false;
+if(isset($_GET['message'])){
+    $isMessage = true;
+}
 ?>
 
 <!doctype html>
@@ -96,23 +101,40 @@ $users = array(
         <div class="modal-title">Sign up</div>
         <div id="signup-modal-close-button">&times;</div>
     </div>
-    <form action="#" method="post">
+    <form action="../Controller/SignUpController.php" method="post" enctype="multipart/form-data">
         <div class="modal-body">
             <div class="form-input">
                 <label for="email">User Id : </label>
-                <input type="email" name="email" required>
+                <input type="email" name="id" required>
             </div>
             <div class="form-input">
                 <label for="password"> Password : </label>
-                <input type="password" required>
+                <input type="password" required name="password">
             </div>
             <div class="form-input">
                 <label for="firstName"> First-Name : </label>
-                <input type="text" required maxlength="30">
+                <input type="text" required maxlength="30" name="firstName">
             </div>
             <div class="form-input">
                 <label for="lastName"> Last-Name : </label>
-                <input type="text" required maxlength="30">
+                <input type="text" required maxlength="30" name="lastName">
+            </div>
+            <div class="form-input">
+                <label for="age"> Age : </label>
+                <input type="number" max="100" min="18" required name="age">
+            </div>
+            <div class="form-input">
+                <label for="about"> About You : </label>
+                <input type="text"  required maxlength="300" name="about">
+            </div>
+            <div class="form-input">
+                <label for="profilePic"> Profile Pic : </label>
+                <input type="file" required name="profilePic">
+            </div>
+            <div class="form-input-gender">
+                <label for="gender"> Gender : </label>
+                <input type="radio" name="gender" value="male" style="padding: 0; margin: 10px;"> Male
+                <input type="radio" name="gender" value="female" style="padding: 0; margin: 10px;"> Female
             </div>
             <button class="login-modal-button" type="submit" value="Login">Login</button>
         </div>
@@ -125,7 +147,7 @@ $users = array(
             <div class="close-btn" id="profile-close-button">&times;</div>
         </div>
         <div class="modal-body">
-            <img src="../UserImages/img_1_1.jpg" alt="user_image">
+            <img src="<?= $users[$i]['profilePicUrl']?>" alt="user_image">
             <div class="profile_img" id="<?= $users[$i]['id']."_id" ?>">
                 <div class="heart profile-btn"></div>
                 <div id="profile-window-close-btn" class="profile-btn <?= ($i == 4) ? "five" : ''  ?>">&times;</div>
@@ -138,6 +160,15 @@ $users = array(
 <div id="overlay"></div>
 </body>
 <script>
+    // console.log('gsakag');
+    let isMessage = <?= $isMessage ?>+ "";
+    // console.log(isMessage);
+    message = '';
+    if(isMessage){
+        message = '<?php echo isset($_GET['message']) ? $_GET['message'] : "";?>';
+        alert(message);
+    }
+
     let profiles = <?php echo json_encode($users, JSON_PRETTY_PRINT); ?>;
     let currentProfile = 1;
     const profileXBtn = document.querySelectorAll('#profile-window-close-btn');

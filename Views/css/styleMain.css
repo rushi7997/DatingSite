@@ -198,6 +198,30 @@ nav {
     border-radius: 10px;
 }
 
+.form-input select{
+    font-size: 1.4rem;
+    width: 150px;
+    max-width: 70%;
+    height: 40px;
+    padding: 0 20px;
+    align-items: center;
+    margin-right: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.form-input-gender{
+    font-size: 1.2rem;
+}
+
+.form-input-gender label{
+    font-size: 1.2rem;
+}
+
+.form-input-gender input{
+    font-size: 1.2rem;
+}
+
 .login-modal-button{
     width: 200px;
     background: #FFFFFF;
@@ -232,6 +256,18 @@ nav {
     background-color: rgba(255,255,255,1);
     width: 500px;
     max-width: 80%;
+    overflow-y: auto;
+}
+
+#signup-modal::-webkit-scrollbar{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#signup-modal::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
 }
 
 #signup-modal.active{

@@ -11,10 +11,13 @@ class User
     private bool $isPremium;
     private int $age;
     private bool $gender; // TRUE for male and False for FEMALE
+    private string $password;
 
-    public function __construct(string $id,string $firstName, string $lastName, string $about, string $profilePicUrl, bool $isPremium, int $age, bool $gender)
+
+
+    public function __construct(string $id,string $firstName, string $lastName, string $about, string $profilePicUrl, bool $isPremium, int $age, bool $gender, string $password)
     {
-        $this->$id = $id;
+        $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->about = $about;
@@ -22,6 +25,17 @@ class User
         $this->isPremium = $isPremium;
         $this->age = $age;
         $this->gender = $gender;
+        $this->password = $password;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 
     public function getId(): string

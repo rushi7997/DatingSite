@@ -1,7 +1,7 @@
 <?php
 
 //require_once "./User.php";
-
+header("Access-Control-Allow-Origin: *");
 class UserDataModel
 {
     private $connection = null;
@@ -20,9 +20,10 @@ class UserDataModel
             'profilePicUrl' => $user->getProfilePicUrl(),
             'isPremium' => $user->isPremium(),
             'age' => $user->getAge(),
-            'gender' => $user->isGender()
+            'gender' => $user->isGender(),
+            'password'=> $user->getPassword()
         ];
-        $sql = "INSERT INTO users (id, firstName, lastName, about, profilePicUrl, isPremium, age, gender) VALUES (:id, :firstName, :lastName, :about, :profilePicUrl, :isPremium, :age, :gender)";
+        $sql = "INSERT INTO users (id, firstName, lastName, about, profilePicUrl, isPremium, age, gender, password) VALUES (:id, :firstName, :lastName, :about, :profilePicUrl, :isPremium, :age, :gender, :password)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
     }
@@ -47,16 +48,7 @@ class UserDataModel
         $stmt->execute([$id]);
         $data = $stmt->fetchAll();
 
-        $id = $data[0]['id'];
-        $firstName = $data[0]['firstName'];
-        $lastName = $data[0]['lastName'];
-        $about = $data[0]['about'];
-        $profilePicUrl = $data[0]['profilePicUrl'];
-        $isPremium = $data[0]['isPremium'];
-        $age = $data[0]['age'];
-        $gender = $data[0]['gender'];
-
-        return new User($data[0]['id'],$data[0]['firstName'],$data[0]['lastName'],$data[0]['about'],$data[0]['profilePicUrl'],$data[0]['isPremium'],$data[0]['age'],$data[0]['gender']);
+        return new User($data[0]['id'],$data[0]['firstName'],$data[0]['lastName'],$data[0]['about'],$data[0]['profilePicUrl'],$data[0]['isPremium'],$data[0]['age'],$data[0]['gender'],$data[0]['password']);
 
     }
 
