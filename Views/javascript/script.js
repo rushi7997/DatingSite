@@ -6,12 +6,6 @@ const closeSignupModalButton = document.getElementById('signup-modal-close-butto
 const openProfileModalButton = document.getElementById("openProfileModal");
 const closeProfileModalButton = document.getElementById('profile-close-button');
 
-// const fiveBtn = document.getElementsByClassName('five');
-//
-// fiveBtn[0].addEventListener('click', ()=> {
-//     const modal = document.getElementById("5");
-// })
-
 const resetProfileModal = (modal) => {
     if (modal === null) return;
     modal.classList.remove("gone");

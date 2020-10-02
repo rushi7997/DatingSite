@@ -17,7 +17,8 @@
 }
 
 .profile {
-    width: 25%;
+    width: 27%;
+    max-width: 400px;
     height: 90%;
     padding: 10px;
     border: #fd267d solid 2px;
@@ -68,8 +69,13 @@
 }
 
 .other-users {
-    width: 30%;
-    height: 90vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 35%;
+    transition: ease-in-out 300ms;
+    height: 98%;
     padding: 5px;
     margin: 10px;
     display: flex;
@@ -80,6 +86,20 @@
     border-radius: 10px;
     overflow-y: auto;
 }
+
+.other-users.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: ease-in-out 300ms;
+    z-index: 10;
+}
+
+.other-users.gone {
+    position: absolute;
+    left: -50%;
+    opacity: 0;
+    transition: 1s ease-in-out;
+}
+
 
 .other-users::-webkit-scrollbar {
     width: 10px;
@@ -94,6 +114,8 @@
 
 
 .other-users img {
+    /*margin-top: 40px;*/
+    padding: 10px;
     width: 300px;
     height: 400px;
 }

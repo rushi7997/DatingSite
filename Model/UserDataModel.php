@@ -74,5 +74,10 @@ class UserDataModel
         return $users;
     }
 
+    public function sendWink(string $toUser, string $fromUser){
+        $sql = "INSERT INTO wink (to_user, from_user, seen) values ( ?, ?, FALSE);";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$toUser, $fromUser]);
+    }
 
 }
