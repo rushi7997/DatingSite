@@ -9,11 +9,16 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: left;
+    /*align-items: center;*/
+    width: 100%;
+    height: 100%;
     font-family: 'Ubuntu', sans-serif;
 }
 
 .profile{
     width: 25%;
+    height: 90%;
     padding: 10px;
     border: #fd267d solid 2px;
     border-radius: 10px;
@@ -56,6 +61,90 @@
 .profile_about{
     width: 100%;
     text-align: left;
-
 }
 
+.other-users{
+    width: 30%;
+    height: 90vh;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: #fd267d 2px solid;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+.other-users::-webkit-scrollbar{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.other-users::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
+}
+
+
+.other-users img {
+    width: 300px;
+    height: 400px;
+}
+
+.btns-other-profiles{
+    display: flex;
+    flex-direction: row;
+}
+
+#other-profile-close-btn{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size:3rem;
+    font-weight: 700;
+    color: #FD5068;
+    text-shadow: #fd267d;
+    opacity: 0.6;
+    margin-top: 20px;
+}
+
+#other-profile-close-btn:hover{
+    opacity: 1;
+    transition: ease-in-out 300ms;
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background: url("../img/heart.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    animation: fave-heart 1s steps(28);
+}
+.heart:hover {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
+}
+@keyframes fave-heart {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -2800px 0;
+    }
+}
+.firstName-lastname-age{
+    font-size: 2rem;
+    text-align: left;
+    width: 90%;
+}
+
+.about-me{
+    text-align: left;
+    width: 90%;
+    padding: 5px;
+    font-weight: 450;
+}

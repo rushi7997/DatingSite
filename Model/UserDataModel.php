@@ -1,6 +1,5 @@
 <?php
 
-//require_once "./User.php";
 header("Access-Control-Allow-Origin: *");
 class UserDataModel
 {

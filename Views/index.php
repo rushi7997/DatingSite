@@ -43,7 +43,7 @@ $users = array(
     ]
 );
 $isMessage = false;
-if(isset($_GET['message'])){
+if (isset($_GET['message'])) {
     $isMessage = true;
 }
 ?>
@@ -125,7 +125,7 @@ if(isset($_GET['message'])){
             </div>
             <div class="form-input">
                 <label for="about"> About You : </label>
-                <input type="text"  required maxlength="300" name="about">
+                <input type="text" required maxlength="300" name="about">
             </div>
             <div class="form-input">
                 <label for="profilePic"> Profile Pic : </label>
@@ -147,10 +147,10 @@ if(isset($_GET['message'])){
             <div class="close-btn" id="profile-close-button">&times;</div>
         </div>
         <div class="modal-body">
-            <img src="<?= $users[$i]['profilePicUrl']?>" alt="user_image">
-            <div class="profile_img" id="<?= $users[$i]['id']."_id" ?>">
+            <img src="<?= $users[$i]['profilePicUrl'] ?>" alt="user_image">
+            <div class="profile_img" id="<?= $users[$i]['id'] . "_id" ?>">
                 <div class="heart profile-btn"></div>
-                <div id="profile-window-close-btn" class="profile-btn <?= ($i == 4) ? "five" : ''  ?>">&times;</div>
+                <div id="profile-window-close-btn" class="profile-btn <?= ($i == 4) ? "five" : '' ?>">&times;</div>
             </div>
             <div class="firstName-lastname-age"><?= ucfirst($users[$i]["firstName"]) . " " . ucfirst($users[$i]["lastName"]) . " , " . $users[$i]["age"] . "." ?></div>
             <div class="about-me"> <?= $users[$i]['about'] ?> </div>
@@ -160,11 +160,9 @@ if(isset($_GET['message'])){
 <div id="overlay"></div>
 </body>
 <script>
-    // console.log('gsakag');
-    let isMessage = <?= $isMessage ?>+ "";
-    // console.log(isMessage);
+    let isMessage = <?= $isMessage ?> + "";
     message = '';
-    if(isMessage){
+    if (isMessage) {
         message = '<?php echo isset($_GET['message']) ? $_GET['message'] : "";?>';
         alert(message);
     }
@@ -174,7 +172,7 @@ if(isset($_GET['message'])){
     const profileXBtn = document.querySelectorAll('#profile-window-close-btn');
     const len = profiles.length;
     profileXBtn.forEach(btn => {
-        if(btn.parentElement.parentElement.parentElement.id !== len.toString()){
+        if (btn.parentElement.parentElement.parentElement.id !== len.toString()) {
             btn.addEventListener('click', () => {
                 const modal = document.getElementById(currentProfile.toString());
                 nextProfile(modal);
@@ -185,13 +183,13 @@ if(isset($_GET['message'])){
 
     const nextProfile = (modal) => {
         let currentModal = modal;
-        if(currentModal === null)
-            return ;
+        if (currentModal === null)
+            return;
         currentModal.classList.remove("active");
         currentModal.classList.add("gone");
         currentProfile += 1;
         let nextModal = document.getElementById(currentProfile);
-        if(nextModal===null)
+        if (nextModal === null)
             return
         nextModal.classList.add("active");
     }
@@ -200,7 +198,7 @@ if(isset($_GET['message'])){
 
 
     dataClosebtn.forEach(btn => {
-        for (let i = 0; i <= 5; i++){
+        for (let i = 0; i <= 5; i++) {
             btn.addEventListener('click', () => {
                 let modal = document.getElementById(i.toString());
                 closeModal(modal);
@@ -211,7 +209,7 @@ if(isset($_GET['message'])){
     });
     const fiveBtn = document.getElementsByClassName('five');
 
-    fiveBtn[0].addEventListener('click', ()=> {
+    fiveBtn[0].addEventListener('click', () => {
         dataClosebtn[4].click();
         let modal = document.getElementById("signup-modal");
         console.log(modal);

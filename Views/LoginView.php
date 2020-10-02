@@ -1,7 +1,6 @@
 <?php
 include_once "../Model/User.php";
 session_start();
-//echo session_id();
 $user = $_SESSION['user'];
 ?>
 
@@ -17,19 +16,27 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="./css/styleLogin.css">
 </head>
 <body>
-    <div class="body">
-        <div class="profile">
-            <div class="profile_pic">
-                <img src="<?= $user->getProfilePicUrl() ?>" alt="profile_pic" />
-            </div>
-            <div class="Names">
-                <?= ucfirst($user->getFirstName()). " ". ucfirst($user->getLastName()) ." ,". $user->getAge() ?>
-            </div>
-            <div class="gender">
-                <?php echo $user->isGender() ? "Male" : "Female" ?>
-            </div>
-            <div class="profile_about"> <?= $user->getAbout() ?> </div>
+<div class="body">
+    <div class="profile">
+        <div class="profile_pic">
+            <img src="<?= $user->getProfilePicUrl() ?>" alt="profile_pic"/>
         </div>
+        <div class="Names">
+            <?= ucfirst($user->getFirstName()) . " " . ucfirst($user->getLastName()) . " ," . $user->getAge() ?>
+        </div>
+        <div class="gender">
+            <?php echo $user->isGender() ? "Male" : "Female" ?>
+        </div>
+        <div class="profile_about"> <?= $user->getAbout() ?> </div>
+    </div>
+    <div class="other-users">
+        <img src="../UserImages/First-Last-23.jpg" alt="profile_pic">
+        <div class="btns-other-profiles">
+            <div class="heart"></div>
+            <div id="other-profile-close-btn" class="profile-btn <?= ($i == 4) ? "five" : '' ?>">&times;</div>
+        </div>
+        <div class="firstName-lastname-age"> First Last , 23</div>
+        <div class="about-me">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio.</div>
     </div>
 </body>
 </html>

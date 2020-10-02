@@ -256,6 +256,7 @@ nav {
     background-color: rgba(255,255,255,1);
     width: 500px;
     max-width: 80%;
+    height: 90%;
     overflow-y: auto;
 }
 
