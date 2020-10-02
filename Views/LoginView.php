@@ -2,6 +2,7 @@
 include_once "../Model/User.php";
 session_start();
 $user = $_SESSION['user'];
+$otherUsers = $_SESSION['otherUsers'];
 ?>
 
 <!doctype html>
@@ -36,7 +37,9 @@ $user = $_SESSION['user'];
             <div id="other-profile-close-btn" class="profile-btn <?= ($i == 4) ? "five" : '' ?>">&times;</div>
         </div>
         <div class="firstName-lastname-age"> First Last , 23</div>
-        <div class="about-me">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio.</div>
+        <div class="about-me">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem
+            culpa nesciunt nihil aut nostrum explicabo reprehenderit optio.
+        </div>
     </div>
 </body>
 </html>

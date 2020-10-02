@@ -5,7 +5,7 @@
 /*    padding: 0;*/
 /*}*/
 
-.body{
+.body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -16,7 +16,7 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-.profile{
+.profile {
     width: 25%;
     height: 90%;
     padding: 10px;
@@ -28,42 +28,46 @@
     align-items: center;
     box-shadow: 2px 3px 4px 5px #CCCCCC;
 }
-.profile:hover{
-    box-shadow: 1px 1px 1px 1px #CCCCCC ;
+
+.profile:hover {
+    box-shadow: 1px 1px 1px 1px #CCCCCC;
     transition: ease-in-out 200ms;
 }
 
-.profile_pic{
+.profile_pic {
     width: 150px;
     height: 150px;
 
 }
 
-.profile_pic img{
+.profile_pic img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     border: black 1px solid;
 }
-.Names{
+
+.Names {
     font-size: 1.5rem;
     text-align: left;
     width: 100%;
     margin-top: 10px;
 }
-.gender{
+
+.gender {
     color: gray;
     font-size: 1.2rem;
     text-align: left;
     width: 100%;
     /*margin-top: 10px;*/
 }
-.profile_about{
+
+.profile_about {
     width: 100%;
     text-align: left;
 }
 
-.other-users{
+.other-users {
     width: 30%;
     height: 90vh;
     padding: 5px;
@@ -76,12 +80,13 @@
     border-radius: 10px;
     overflow-y: auto;
 }
-.other-users::-webkit-scrollbar{
+
+.other-users::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
 }
 
-.other-users::-webkit-scrollbar-thumb{
+.other-users::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #FFF;
     background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
@@ -93,17 +98,17 @@
     height: 400px;
 }
 
-.btns-other-profiles{
+.btns-other-profiles {
     display: flex;
     flex-direction: row;
 }
 
-#other-profile-close-btn{
+#other-profile-close-btn {
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
-    font-size:3rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #FD5068;
     text-shadow: #fd267d;
@@ -111,7 +116,7 @@
     margin-top: 20px;
 }
 
-#other-profile-close-btn:hover{
+#other-profile-close-btn:hover {
     opacity: 1;
     transition: ease-in-out 300ms;
 }
@@ -124,10 +129,12 @@
     cursor: pointer;
     animation: fave-heart 1s steps(28);
 }
+
 .heart:hover {
     background-position: -2800px 0;
     transition: background 1s steps(28);
 }
+
 @keyframes fave-heart {
     0% {
         background-position: 0 0;
@@ -136,13 +143,14 @@
         background-position: -2800px 0;
     }
 }
-.firstName-lastname-age{
+
+.firstName-lastname-age {
     font-size: 2rem;
     text-align: left;
     width: 90%;
 }
 
-.about-me{
+.about-me {
     text-align: left;
     width: 90%;
     padding: 5px;

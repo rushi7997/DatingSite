@@ -116,16 +116,16 @@ nav {
     border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255, 255, 255, 1);
     width: 500px;
     max-width: 80%;
 }
 
-#login-modal.active{
+#login-modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.modal-header{
+.modal-header {
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -133,12 +133,12 @@ nav {
     border-bottom: 1px solid black;
 }
 
-.modal-title{
+.modal-title {
     font-size: 1.6rem;
     font-weight: 600;
 }
 
-.modal-header #login-modal-close-button{
+.modal-header #login-modal-close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -149,44 +149,45 @@ nav {
     text-shadow: #fd267d;
 }
 
-#overlay{
+#overlay {
     position: fixed;
     transition: 300ms ease-in-out;
     opacity: 0;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     filter: blur(1px);
     pointer-events: none;
 }
 
-#overlay.active{
+#overlay.active {
     opacity: 1;
     pointer-events: all;
 }
 
-.modal-body{
+.modal-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.form-input{
+.form-input {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     width: 100%;
 }
 
-.form-input label{
+.form-input label {
     font-size: 1.4rem;
     padding: 0 20px;
     margin: 20px;
 }
-.form-input input{
+
+.form-input input {
     font-size: 1.4rem;
     width: 150px;
     max-width: 70%;
@@ -198,7 +199,7 @@ nav {
     border-radius: 10px;
 }
 
-.form-input select{
+.form-input select {
     font-size: 1.4rem;
     width: 150px;
     max-width: 70%;
@@ -210,19 +211,19 @@ nav {
     border-radius: 10px;
 }
 
-.form-input-gender{
+.form-input-gender {
     font-size: 1.2rem;
 }
 
-.form-input-gender label{
+.form-input-gender label {
     font-size: 1.2rem;
 }
 
-.form-input-gender input{
+.form-input-gender input {
     font-size: 1.2rem;
 }
 
-.login-modal-button{
+.login-modal-button {
     width: 200px;
     background: #FFFFFF;
     color: #FD5068;
@@ -244,7 +245,7 @@ nav {
 
 /*signup modal*/
 
-#signup-modal{
+#signup-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -253,29 +254,29 @@ nav {
     border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255, 255, 255, 1);
     width: 500px;
     max-width: 80%;
     height: 90%;
     overflow-y: auto;
 }
 
-#signup-modal::-webkit-scrollbar{
+#signup-modal::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
 }
 
-#signup-modal::-webkit-scrollbar-thumb{
+#signup-modal::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #FFF;
     background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
 }
 
-#signup-modal.active{
+#signup-modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.modal-header #signup-modal-close-button{
+.modal-header #signup-modal-close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -302,16 +303,19 @@ nav {
     .navbar_item {
         margin-top: 10px;
     }
-    .form-input{
+
+    .form-input {
         flex-direction: column;
         /*text-align: left;*/
         align-items: flex-start;
     }
-    .form-input input{
+
+    .form-input input {
         width: 80%;
         margin: 0 auto;
     }
-    .body-writing p{
+
+    .body-writing p {
         font-size: 2rem;
     }
 }
@@ -326,10 +330,12 @@ nav {
     cursor: pointer;
     animation: fave-heart 1s steps(28);
 }
+
 .heart:hover {
     background-position: -2800px 0;
     transition: background 1s steps(28);
 }
+
 @keyframes fave-heart {
     0% {
         background-position: 0 0;
@@ -338,9 +344,10 @@ nav {
         background-position: -2800px 0;
     }
 }
+
 /*profile modal*/
 
-.profile_modal{
+.profile_modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -349,20 +356,20 @@ nav {
     border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255, 255, 255, 1);
     width: 500px;
     max-width: 80%;
     height: 95%;
     overflow-y: auto;
 }
 
-.modal-body{
+.modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.profile_img{
+.profile_img {
     width: 300px;
     display: flex;
     flex-direction: row;
@@ -371,13 +378,13 @@ nav {
     flex-wrap: wrap;
 }
 
-.profiles{
+.profiles {
     display: flex;
     width: 90%;
     flex-direction: row;
 }
 
-.modal-body img{
+.modal-body img {
     width: 300px;
     height: 400px;
     border-radius: 10px;
@@ -387,7 +394,7 @@ nav {
     box-shadow: 2px 3px 4px 5px #ccc;
 }
 
-#profile-close-button{
+#profile-close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -398,55 +405,55 @@ nav {
     text-shadow: #fd267d;
 }
 
-#profile-window-close-btn{
+#profile-window-close-btn {
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
-    font-size:3rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #FD5068;
     text-shadow: #fd267d;
     opacity: 0.6;
 }
 
-#profile-window-close-btn:hover{
+#profile-window-close-btn:hover {
     opacity: 1;
     transition: ease-in-out 300ms;
 }
 
-.firstName-lastname-age{
+.firstName-lastname-age {
     font-size: 2rem;
     text-align: left;
     width: 90%;
 }
 
-.about-me{
+.about-me {
     text-align: left;
     width: 90%;
     padding: 10px;
     font-weight: 450;
 }
 
-.profile_modal::-webkit-scrollbar{
+.profile_modal::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
 }
 
-.profile_modal::-webkit-scrollbar-thumb{
+.profile_modal::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #FFF;
     background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
 }
 
-.profile_modal.gone{
+.profile_modal.gone {
     position: absolute;
     left: -50%;
     opacity: 0;
     transition: ease-in-out 1s;
 }
 
-.profile_modal.active{
+.profile_modal.active {
     transform: translate(-50%, -50%) scale(1);
     transition: ease-in-out 300ms;
 }

@@ -13,16 +13,16 @@ const closeProfileModalButton = document.getElementById('profile-close-button');
 // })
 
 const resetProfileModal = (modal) => {
-    if(modal === null) return;
+    if (modal === null) return;
     modal.classList.remove("gone");
 }
 
-openProfileModalButton.addEventListener('click', ()=> {
+openProfileModalButton.addEventListener('click', () => {
     const modal = document.getElementById("1");
     openLoginModal(modal);
 });
 
-closeProfileModalButton.addEventListener('click', ()=> {
+closeProfileModalButton.addEventListener('click', () => {
     const modal = document.getElementById('1');
     closeModal(modal);
 });
@@ -49,7 +49,7 @@ closeLoginModalButton.addEventListener('click', () => {
     closeModal(modal);
 });
 
-overlay.addEventListener('click', ()=>{
+overlay.addEventListener('click', () => {
     const modals = document.querySelectorAll('.active');
     modals.forEach(modal => {
         closeModal(modal);
