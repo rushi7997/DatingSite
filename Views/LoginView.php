@@ -24,7 +24,10 @@ $connection = new MYSQLConnection();
 $userDataModel = new UserDataModel($connection);
 
 $allWinks = $_SESSION['allWinks'];
-$allMatches = $_SESSION['allMatches']
+if(isset($_SESSION['allMatches'])){
+    $allMatches = $_SESSION['allMatches'];
+}
+
 ?>
 
 <!doctype html>
@@ -55,14 +58,31 @@ $allMatches = $_SESSION['allMatches']
     <div class="messagePanel">
         <div class="notification">
             <?php
-            if(count($allWinks) > 0){
-            for ($j = 0; $j < count($allWinks); $j++) { ?>
-                <div class="single-notification">
-                    <b><?= $allWinks[$j] ?></b> Has Winked At You !
-                </div>
-            <?php }}else{ ?>
+            if (count($allWinks) > 0) {
+                for ($j = 0; $j < count($allWinks); $j++) { ?>
+                    <div class="single-notification">
+                        <b><?= $allWinks[$j] ?></b> Has Winked At You !
+                    </div>
+                <?php }
+            } else { ?>
                 <div class="single-notification">
                     sorry You have no Winks!
+                </div>
+            <?php } ?>
+        </div>
+        <div class="messages">
+            <?php
+            if (count($allMatches) > 0) {
+                for ($k = 0; $k < count($allMatches); $k++) {
+                    ?>
+                    <div class="matches">
+                        <div class="match-pic"><img src="<?=$allMatches[$k]['profilePicUrl']?>" alt="pic"></div>
+                        <div class="match-name"> <b><?= $allMatches[$k]['userName'] ?></b> Has Matched with You! </div>
+                    </div>
+                <?php }
+            } else { ?>
+                <div class="single-notification">
+                    Sorry You have no Matches!
                 </div>
             <?php } ?>
         </div>

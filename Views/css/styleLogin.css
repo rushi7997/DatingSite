@@ -14,6 +14,7 @@
     width: 100%;
     height: 100%;
     font-family: 'Ubuntu', sans-serif;
+    overflow-x: hidden;
 }
 
 .profile {
@@ -100,7 +101,7 @@
     transition: 1s ease-in-out;
 }
 
-.other-users.select{
+.other-users.select {
     position: absolute;
     left: 150%;
     opacity: 0;
@@ -185,17 +186,18 @@
     font-weight: 450;
 }
 
-.messagePanel{
+.messagePanel {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 25%;
     /*height: 100px;*/
-    border: black solid 2px;
+    /*border: black solid 2px;*/
+    margin-right: 20px;
 }
 
-.notification{
+.notification {
     width: 100%;
     max-height: 200px;
     border: #fd267d 2px solid;
@@ -206,6 +208,7 @@
     overflow-y: auto;
     flex-wrap: nowrap;
 }
+
 .notification::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
@@ -217,11 +220,61 @@
     background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
 }
 
-.single-notification{
+.single-notification {
     width: 90%;
-    margin: 5px auto ;
-    background: #CCCCCC;
+    margin: 5px auto;
+    background: #F5F5F5;
     border: 1px solid black;
-    border-radius: 10px ;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: #CCCCCC 1px 2px 3px 4px;
+}
+
+.messages {
+    border: #fd267d 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    max-height: 400px;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.messages::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#ff7854), to(#fd267d));
+}
+
+.matches {
+    width: 100%;
+    background: #CCCCCC;
+    /*border: 1px solid black;*/
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+.match-pic {
+    width: 70px;
+    height: 70px;
+}
+
+.match-pic img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+.match-name {
     padding: 10px;
 }
