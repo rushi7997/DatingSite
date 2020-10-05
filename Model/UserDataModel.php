@@ -205,7 +205,6 @@ class UserDataModel
                 break;
             }
         }
-
         return $users;
     }
 }

@@ -54,6 +54,8 @@ if(isset($_SESSION['allMatches'])){
             <?php echo $user->isGender() ? "Male" : "Female" ?>
         </div>
         <div class="profile_about"> <?= $user->getAbout() ?> </div>
+
+        <a href="../Controller/logoutController.php" style="text-decoration: none"><div class="logout-btn" id="logout"> Logout </div></a>
     </div>
     <div class="messagePanel">
         <div class="notification">

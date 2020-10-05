@@ -102,7 +102,7 @@ if (isset($_GET['message'])) {
                 <input type="radio" name="gender" value="male" style="padding: 0; margin: 10px;"> Male
                 <input type="radio" name="gender" value="female" style="padding: 0; margin: 10px;"> Female
             </div>
-            <button class="login-modal-button" type="submit" value="Login">Login</button>
+            <button class="login-modal-button" type="submit" value="Login">Signup</button>
         </div>
     </form>
 </div>

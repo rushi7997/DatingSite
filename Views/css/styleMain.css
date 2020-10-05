@@ -5,6 +5,11 @@
     padding: 0;
 }
 
+
+a{
+    text-decoration: none;
+}
+
 body {
     background: url("../img/bg_img_1.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -64,6 +69,7 @@ nav {
     background: linear-gradient(262deg, #ff7854, #fd267d);
     transition: ease-in 0.3s;
 }
+
 
 .body-writing {
     display: flex;
