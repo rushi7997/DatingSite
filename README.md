@@ -48,6 +48,14 @@ Williamjones@gmail.com | password
 
 ### Features
 
+- Here I have Basically tried to clone Tinder Application 
+- Just Like Tinder If both (Girl And Boy) Right Swipe each-other Than And Only Than They Are Allowed to chat with each other 
+- I replaced it with Favourite list Feature. and skipped Favourite list feature.
+- Just Like Favourite List I have Managed Winks so Any one can add other user's Profile to Wink List From Which If they Wink Back The User Will get A Match and they both can start to chat with each other
+- I also Skipped the Feature with Premium User and all of the users in my website will be free for now.
+
+
+
 - Home Page :
     - You will have 3 buttons Login, Signup and Profiles
     - Profiles button shows you top five profiles of the application
