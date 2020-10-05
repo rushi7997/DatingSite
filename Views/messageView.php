@@ -17,12 +17,14 @@ foreach ($messages as $item) {
         $message = array();
         $message['message'] = $item['message'];
         $message['time'] = $item['sent_time'];
+        $message['seen'] = $item['seen'];
         $messages_In[$i] = $message;
         $i++;
     } else {
         $message = array();
         $message['message'] = $item['message'];
         $message['time'] = $item['sent_time'];
+        $message['seen'] = $item['seen'];
         $messages_out[$i] = $message;
         $i++;
     }
@@ -49,9 +51,9 @@ $length = count($messages);
     for ($j = 0; $j < $length; $j++) {
         if (isset($messages_In[$j])) {
             ?>
-            <div class="messages-in"> <?= $messages_In[$j]['message'] ?> </div>
+            <div class="messages-in"> <?= $messages_In[$j]['message'] ?> <sub><?= $messages_In[$j]['seen'] ? 'seen' : 'not seen' ?></sub></div>
         <?php } else { ?>
-            <div class="messages-out"> <?= $messages_out[$j]['message'] ?> </div>
+            <div class="messages-out"> <?= $messages_out[$j]['message'] ?> <sub><?= $messages_out[$j]['seen'] ? 'seen' : 'not seen' ?></sub></div>
             <?php
         }
     } ?>

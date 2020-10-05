@@ -128,6 +128,11 @@ class UserDataModel
 
     public function getAllMessages(string $to_user, string $from_user)
     {
+        $sql = "UPDATE `messages` SET `seen`= TRUE WHERE to_user = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$to_user]);
+
+
         $sql = "SELECT * FROM messages where to_user = ? AND from_user = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$to_user, $from_user]);
@@ -135,12 +140,14 @@ class UserDataModel
         $data = $stmt->fetchAll();
         $messages = array();
         $i = 0;
+
         foreach ($data as $item) {
             $message = array();
             $message['to_user'] = $item['to_user'];
             $message['from_user'] = $item['from_user'];
             $message['message'] = $item['message'];
             $message['sent_time'] = $item['sent_time'];
+            $message['seen'] = $item['seen'];
             $messages[$i] = $message;
             $i++;
         }
@@ -155,9 +162,11 @@ class UserDataModel
             $message['from_user'] = $item['from_user'];
             $message['message'] = $item['message'];
             $message['sent_time'] = $item['sent_time'];
+            $message['seen'] = $item['seen'];
             $messages[$i] = $message;
             $i++;
         }
+
         return $messages;
     }
 
