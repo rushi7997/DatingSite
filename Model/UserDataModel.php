@@ -74,10 +74,56 @@ class UserDataModel
         return $users;
     }
 
-    public function sendWink(string $toUser, string $fromUser){
+    public function sendWink(string $toUser, string $fromUser)
+    {
         $sql = "INSERT INTO wink (to_user, from_user, seen) values ( ?, ?, FALSE);";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$toUser, $fromUser]);
     }
 
+    public function allUserWinks(string $userId)
+    {
+        $sql = "SELECT COUNT(from_user),from_user FROM `wink` WHERE to_user = ? GROUP BY(from_user)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        $data = $stmt->fetchAll();
+        $winks = array();
+        $i = 0;
+        foreach ($data as $item) {
+            $user = $this->getUser($item['from_user']);
+            $userName = $user->getFirstName() . " " . $user->getLastName();
+            $winks[$i] = $userName;
+            $i++;
+        }
+
+        $sql = "UPDATE `wink` SET `seen`= TRUE WHERE to_user = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        return $winks;
+    }
+
+    public function matchedUsers(string $userId){
+        $sql = "SELECT COUNT(a.to_user), a.to_user , a.from_user FROM wink as a JOIN wink as b WHERE a.to_user = b.from_user AND a.from_user = b.to_user AND a.to_user = ? GROUP BY a.from_user";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+
+        $data = $stmt->fetchAll();
+        $matches = array();
+        $i = 0;
+        foreach ($data as $item) {
+            $match = array();
+            $user = $this->getUser($item['from_user']);
+            $userName = $user->getFirstName() . " " . $user->getLastName();
+            $match['userName'] = $userName;
+            $match['profilePicUrl'] = $user->getProfilePicUrl();
+            $matches[$i] = $match;
+            $i++;
+        }
+
+        return $matches;
+    }
+
 }
+
+//

@@ -5,17 +5,17 @@ $user = $_SESSION['user'];
 $otherUsers = $_SESSION['otherUsers'];
 $otherUsersArray = array();
 $j = 1;
-foreach ($otherUsers as $item){
-    $otherUsersArray[$j.""] = array();
-    $otherUsersArray[$j.'']['id'] = $item->getId();
-    $otherUsersArray[$j.'']['firstName'] = $item->getFirstName();
-    $otherUsersArray[$j.'']['lastName'] = $item->getLastName();
-    $otherUsersArray[$j.'']['about'] = $item->getAbout();
-    $otherUsersArray[$j.'']['profilePicUrl'] = $item->getProfilePicUrl();
-    $otherUsersArray[$j.'']['isPremium'] = $item->isPremium();
-    $otherUsersArray[$j.'']['age'] = $item->getAge();
-    $otherUsersArray[$j.'']['gender'] = $item->IsGender();
-    $otherUsersArray[$j.'']['password'] = $item->getPassword();
+foreach ($otherUsers as $item) {
+    $otherUsersArray[$j . ""] = array();
+    $otherUsersArray[$j . '']['id'] = $item->getId();
+    $otherUsersArray[$j . '']['firstName'] = $item->getFirstName();
+    $otherUsersArray[$j . '']['lastName'] = $item->getLastName();
+    $otherUsersArray[$j . '']['about'] = $item->getAbout();
+    $otherUsersArray[$j . '']['profilePicUrl'] = $item->getProfilePicUrl();
+    $otherUsersArray[$j . '']['isPremium'] = $item->isPremium();
+    $otherUsersArray[$j . '']['age'] = $item->getAge();
+    $otherUsersArray[$j . '']['gender'] = $item->IsGender();
+    $otherUsersArray[$j . '']['password'] = $item->getPassword();
     $j++;
 }
 require_once "../Model/MYSQLConnection.php";
@@ -23,6 +23,8 @@ require_once "../Model/UserDataModel.php";
 $connection = new MYSQLConnection();
 $userDataModel = new UserDataModel($connection);
 
+$allWinks = $_SESSION['allWinks'];
+$allMatches = $_SESSION['allMatches']
 ?>
 
 <!doctype html>
@@ -50,36 +52,47 @@ $userDataModel = new UserDataModel($connection);
         </div>
         <div class="profile_about"> <?= $user->getAbout() ?> </div>
     </div>
-</div>
-    <?php for ($i = 0; $i < count($otherUsers); $i++) { ?>
-        <div class="other-users" id="<?=$i?>">
-            <img src="<?= $otherUsers[$i + 1]->getProfilePicUrl() ?>" alt="profile_pic">
-            <div class="btns-other-profiles">
-                <div class="heart" id="<?=$otherUsers[$i+1]->getId()?>"></div>
-                <div id="other-profile-close-btn" class="profile-btn">&times;</div>
-            </div>
-            <div class="firstName-lastname-age"> <?= ucfirst($otherUsers[$i + 1]->getFirstName()) . " " . ucfirst($otherUsers[$i + 1]->getLastName()) . " , " . $otherUsers[$i + 1]->getAge() . "." ?> </div>
-            <div class="about-me"> <?= $otherUsers[$i + 1]->getAbout() ?> </div>
+    <div class="messagePanel">
+        <div class="notification">
+            <?php
+            if(count($allWinks) > 0){
+            for ($j = 0; $j < count($allWinks); $j++) { ?>
+                <div class="single-notification">
+                    <b><?= $allWinks[$j] ?></b> Has Winked At You !
+                </div>
+            <?php }}else{ ?>
+                <div class="single-notification">
+                    sorry You have no Winks!
+                </div>
+            <?php } ?>
         </div>
-    <?php } ?>
+    </div>
+</div>
+<?php for ($i = 0; $i < count($otherUsers); $i++) { ?>
+    <div class="other-users" id="<?= $i ?>">
+        <img src="<?= $otherUsers[$i + 1]->getProfilePicUrl() ?>" alt="profile_pic">
+        <div class="btns-other-profiles">
+            <div class="heart" id="<?= $otherUsers[$i + 1]->getId() ?>"></div>
+            <div id="other-profile-close-btn" class="profile-btn">&times;</div>
+        </div>
+        <div class="firstName-lastname-age"> <?= ucfirst($otherUsers[$i + 1]->getFirstName()) . " " . ucfirst($otherUsers[$i + 1]->getLastName()) . " , " . $otherUsers[$i + 1]->getAge() . "." ?> </div>
+        <div class="about-me"> <?= $otherUsers[$i + 1]->getAbout() ?> </div>
+    </div>
+<?php } ?>
 </body>
+
 <script>
     let otherProfiles = <?php echo json_encode($otherUsersArray, JSON_PRETTY_PRINT); ?>;
     let winkButtons = document.querySelectorAll('.heart');
-    let xhttp = new XMLHttpRequest();
     winkButtons.forEach(btn => {
-        btn.addEventListener('click',() => {
+        btn.addEventListener('click', () => {
             let toUser = btn.id;
             let fromUser = "<?=$user->getId()?>";
-            sendWink(toUser,fromUser);
+            sendWink(toUser, fromUser);
         });
     });
 
-    let sendWink = (toUser, fromUser) => {
-        xhttp.open("POST", "../Controller/sendWinkController.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("to_user="+toUser+"&from_user="+fromUser);
-    }
+
 </script>
 <script src="javascript/loginWindowScript.js"></script>
 </html>
