@@ -7,11 +7,16 @@
  
  --
 
-######Created with MVC 
+####Created with MVC 
 
 I have created this project using MVC (although I wish I did it from the beginning of the project. I added MVC later so file managing file structure and references was a headache not gonna lie :sweat_smile: )
 
- ##Installation steps:
+##Installation steps:
  
+ first run these 3 scripts
  
+1. scripts/users.sql
+2. scripts/wink.sql
+3. scripts/messages.sql
+
 
