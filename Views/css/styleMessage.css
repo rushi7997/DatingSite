@@ -1,0 +1,31 @@
+.messages-panel{
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.messages-in{
+    padding: 10px;
+    border-radius: 10px 10px 10px 0;
+    background-color: darkseagreen;
+    text-align: left;
+    width: 50%;
+    margin: 10px;
+    align-self: flex-start;
+}
+
+.messages-out{
+    padding: 10px;
+    width: 50%;
+    justify-self: right;
+    border-radius: 10px 10px 0 10px;
+    background-color:mediumseagreen;
+    margin: 10px;
+    text-align: right;
+    align-self: flex-end;
+}

@@ -103,7 +103,8 @@ class UserDataModel
         return $winks;
     }
 
-    public function matchedUsers(string $userId){
+    public function matchedUsers(string $userId)
+    {
         $sql = "SELECT COUNT(a.to_user), a.to_user , a.from_user FROM wink as a JOIN wink as b WHERE a.to_user = b.from_user AND a.from_user = b.to_user AND a.to_user = ? GROUP BY a.from_user";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
@@ -116,6 +117,7 @@ class UserDataModel
             $user = $this->getUser($item['from_user']);
             $userName = $user->getFirstName() . " " . $user->getLastName();
             $match['userName'] = $userName;
+            $match['id'] = $item['from_user'];
             $match['profilePicUrl'] = $user->getProfilePicUrl();
             $matches[$i] = $match;
             $i++;
@@ -124,6 +126,53 @@ class UserDataModel
         return $matches;
     }
 
+    public function getAllMessages(string $to_user, string $from_user)
+    {
+        $sql = "SELECT * FROM messages where to_user = ? AND from_user = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$to_user, $from_user]);
+
+        $data = $stmt->fetchAll();
+        $messages = array();
+        $i = 0;
+        foreach ($data as $item) {
+            $message = array();
+            $message['to_user'] = $item['to_user'];
+            $message['from_user'] = $item['from_user'];
+            $message['message'] = $item['message'];
+            $message['sent_time'] = $item['sent_time'];
+            $messages[$i] = $message;
+            $i++;
+        }
+        $sql = "SELECT * FROM messages where to_user = ? AND from_user = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$from_user, $to_user]);
+
+        $data = $stmt->fetchAll();
+        foreach ($data as $item) {
+            $message = array();
+            $message['to_user'] = $item['to_user'];
+            $message['from_user'] = $item['from_user'];
+            $message['message'] = $item['message'];
+            $message['sent_time'] = $item['sent_time'];
+            $messages[$i] = $message;
+            $i++;
+        }
+        return $messages;
+    }
+
+    public function sendMessage(string $to_user, string $from_user, string $message)
+    {
+        $data = [
+            'to_user' => $to_user,
+            'from_user' => $from_user,
+            'message' => $message
+        ];
+
+        $sql = "INSERT INTO messages (to_user,from_user,message,seen) values (:to_user, :from_user, :message, FALSE);";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($data);
+    }
 }
 
 //

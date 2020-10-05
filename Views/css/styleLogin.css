@@ -279,3 +279,8 @@
 .match-name {
     padding: 10px;
 }
+
+.messages a{
+    color: inherit;
+    text-decoration: none;
+}

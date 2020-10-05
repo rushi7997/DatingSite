@@ -74,11 +74,11 @@ if(isset($_SESSION['allMatches'])){
             <?php
             if (count($allMatches) > 0) {
                 for ($k = 0; $k < count($allMatches); $k++) {
-                    ?>
-                    <div class="matches">
+                    ?><a href="../Controller/getMessageController.php?to_user=<?=$allMatches[$k]['id']?>" target="_blank">
+                    <div class="matches" id="<?= $allMatches[$k]['id'] ?>">
                         <div class="match-pic"><img src="<?=$allMatches[$k]['profilePicUrl']?>" alt="pic"></div>
                         <div class="match-name"> <b><?= $allMatches[$k]['userName'] ?></b> Has Matched with You! </div>
-                    </div>
+                    </div></a>
                 <?php }
             } else { ?>
                 <div class="single-notification">
