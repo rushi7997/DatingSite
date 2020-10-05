@@ -1,47 +1,13 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-$users = array(
-    [
-        "id" => 1,
-        "firstName" => "First_1",
-        "lastName" => "Last_1",
-        "age" => 25,
-        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profilePicUrl" => "../UserImages/img_1_1.jpg"
-    ],
-    [
-        "id" => 2,
-        "firstName" => "First_2",
-        "lastName" => "Last_2",
-        "age" => 25,
-        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profilePicUrl" => "../UserImages/img_1_1.jpg"
-    ],
-    [
-        "id" => 3,
-        "firstName" => "First_3",
-        "lastName" => "Last_3",
-        "age" => 25,
-        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profilePicUrl" => "../UserImages/img_1_1.jpg"
-    ],
-    [
-        "id" => 4,
-        "firstName" => "First_4",
-        "lastName" => "Last_4",
-        "age" => 25,
-        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profilePicUrl" => "../UserImages/img_1_1.jpg"
-    ],
-    [
-        "id" => 5,
-        "firstName" => "First_5",
-        "lastName" => "Last_5",
-        "age" => 25,
-        "about" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-        "profilePicUrl" => "../UserImages/img_1_1.jpg"
-    ]
-);
+
+require_once "../Model/MYSQLConnection.php";
+require_once "../Model/UserDataModel.php";
+$connection = new MYSQLConnection();
+$userDataModel = new UserDataModel($connection);
+
+$users = $userDataModel->getTopFive();
+
 $isMessage = false;
 if (isset($_GET['message'])) {
     $isMessage = true;
@@ -141,7 +107,7 @@ if (isset($_GET['message'])) {
     </form>
 </div>
 <?php for ($i = 0; $i < count($users); $i++) { ?>
-    <div id="<?= $users[$i]['id'] ?>" class="profile_modal">
+    <div id="<?= $i+1 ?>" class="profile_modal">
         <div class="modal-header">
             <div class="modal-title"> Profiles</div>
             <div class="close-btn" id="profile-close-button">&times;</div>

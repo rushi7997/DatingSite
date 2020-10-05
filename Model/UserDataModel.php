@@ -173,6 +173,32 @@ class UserDataModel
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
     }
+
+    public function getTopFive()
+    {
+        $sql = "SELECT count(w.to_user), w.to_user as 'user', u.firstName as 'firstName', u.lastName as 'lastName', u.about as 'about', u.age as 'age', u.profilePicUrl as 'profilePicUrl' FROM wink as W JOIN users u on u.id = W.to_user GROUP BY w.to_user ORDER BY COUNT(w.to_user) DESC ;";
+        $data = $this->connection->query($sql)->fetchAll();
+//        $data = $stmt->fetchAll();
+
+//        var_dump($data);
+        $users = array();
+        $i = 0;
+        foreach ($data as $item){
+            $user = array();
+            $user['firstName'] = $item['firstName'];
+            $user['lastName'] = $item['lastName'];
+            $user['age'] = $item['age'];
+            $user['about'] = $item['about'];
+            $user['profilePicUrl'] = $item['profilePicUrl'];
+            $users[$i] = $user;
+            $i++;
+            if($i === 5){
+                break;
+            }
+        }
+
+        return $users;
+    }
 }
 
 //
