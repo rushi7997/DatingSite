@@ -111,8 +111,6 @@ if(isset($_SESSION['allMatches'])){
             sendWink(toUser, fromUser);
         });
     });
-
-
 </script>
 <script src="javascript/loginWindowScript.js"></script>
 </html>
